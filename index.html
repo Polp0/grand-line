@@ -75,17 +75,23 @@
             font-size: 18px;
         }
 
-        .log-pose-needle {
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 10px solid #f4d35e;
-            transition: transform 0.3s ease;
+        .title {
+            margin-bottom: 10px;
+        }
+
+        .title h1 {
+            color: #f4d35e;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.4;
         }
 
         .log-pose-label {
@@ -185,6 +191,7 @@
             margin-bottom: 0;
             position: relative;
             overflow: hidden;
+            border-left: 3px solid rgba(244,211,94,0.3);
         }
 
         .saga-header {
@@ -196,6 +203,8 @@
             font-weight: 800;
             letter-spacing: 1px;
             text-transform: uppercase;
+            color: #f4d35e;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
         }
 
         .saga-range {
@@ -309,12 +318,15 @@
 <body>
     <div id="app">
         <section id="search-panel">
+            <div class="title">
+                <h1>ONE PIECE</h1>
+                <span class="subtitle">filler guide</span>
+            </div>
             <div class="log-pose">
                 <div class="log-pose-ring">
                     <input type="number" id="ep-input" min="1" max="1155" placeholder="#" inputmode="numeric">
-                    <div class="log-pose-needle" id="log-pose-needle"></div>
                 </div>
-                <div class="log-pose-label">LOG POSE</div>
+                <div class="log-pose-label">episode</div>
             </div>
             <div id="result-card" class="result-card hidden">
                 <div class="result-saga" id="result-saga"></div>
@@ -397,7 +409,7 @@
         const SAGAS = [
             {
                 name: 'East Blue',
-                gradient: 'linear-gradient(135deg, rgba(33,158,188,0.2), rgba(45,106,79,0.15))',
+                gradient: 'linear-gradient(135deg, rgba(33,158,188,0.3), rgba(45,106,79,0.25))',
                 arcs: [
                     { name: 'Romance Dawn', start: 1, end: 3 },
                     { name: 'Orange Town', start: 4, end: 8 },
@@ -411,7 +423,7 @@
             },
             {
                 name: 'Alabasta',
-                gradient: 'linear-gradient(135deg, rgba(233,196,106,0.2), rgba(180,130,60,0.15))',
+                gradient: 'linear-gradient(135deg, rgba(233,196,106,0.3), rgba(180,130,60,0.25))',
                 arcs: [
                     { name: 'Reverse Mountain', start: 62, end: 63 },
                     { name: 'Whiskey Peak', start: 64, end: 67 },
@@ -424,7 +436,7 @@
             },
             {
                 name: 'Sky Island',
-                gradient: 'linear-gradient(135deg, rgba(255,255,255,0.15), rgba(135,206,235,0.15), rgba(244,211,94,0.1))',
+                gradient: 'linear-gradient(135deg, rgba(255,255,255,0.25), rgba(135,206,235,0.25), rgba(244,211,94,0.15))',
                 arcs: [
                     { name: 'Goat Island', start: 136, end: 138, filler: true },
                     { name: 'Ruluka Island', start: 139, end: 143, filler: true },
@@ -435,7 +447,7 @@
             },
             {
                 name: 'Water 7',
-                gradient: 'linear-gradient(135deg, rgba(0,128,128,0.2), rgba(10,22,40,0.3))',
+                gradient: 'linear-gradient(135deg, rgba(0,128,128,0.3), rgba(10,22,40,0.35))',
                 arcs: [
                     { name: 'Long Ring Long Land', start: 207, end: 219 },
                     { name: "Ocean's Dream", start: 220, end: 224, filler: true },
@@ -447,7 +459,7 @@
             },
             {
                 name: 'Thriller Bark',
-                gradient: 'linear-gradient(135deg, rgba(88,24,120,0.2), rgba(20,10,30,0.3))',
+                gradient: 'linear-gradient(135deg, rgba(88,24,120,0.3), rgba(20,10,30,0.35))',
                 arcs: [
                     { name: 'Ice Hunter', start: 326, end: 336, filler: true },
                     { name: 'Thriller Bark', start: 337, end: 381 },
@@ -456,7 +468,7 @@
             },
             {
                 name: 'Summit War',
-                gradient: 'linear-gradient(135deg, rgba(193,18,31,0.2), rgba(255,140,0,0.12), rgba(20,10,10,0.3))',
+                gradient: 'linear-gradient(135deg, rgba(193,18,31,0.3), rgba(255,140,0,0.2), rgba(20,10,10,0.35))',
                 arcs: [
                     { name: 'Sabaody Archipelago', start: 385, end: 407 },
                     { name: 'Amazon Lily', start: 408, end: 421 },
@@ -468,7 +480,7 @@
             },
             {
                 name: 'Fish-Man Island',
-                gradient: 'linear-gradient(135deg, rgba(10,30,80,0.3), rgba(0,200,200,0.12))',
+                gradient: 'linear-gradient(135deg, rgba(10,30,80,0.35), rgba(0,200,200,0.2))',
                 arcs: [
                     { name: 'Return to Sabaody', start: 517, end: 522 },
                     { name: 'Fish-Man Island', start: 523, end: 574 }
@@ -476,7 +488,7 @@
             },
             {
                 name: 'Dressrosa',
-                gradient: 'linear-gradient(135deg, rgba(200,50,100,0.18), rgba(220,170,50,0.12))',
+                gradient: 'linear-gradient(135deg, rgba(200,50,100,0.3), rgba(220,170,50,0.2))',
                 arcs: [
                     { name: "Z's Ambition", start: 575, end: 578, filler: true },
                     { name: 'Punk Hazard', start: 579, end: 625 },
@@ -486,7 +498,7 @@
             },
             {
                 name: 'Whole Cake Island',
-                gradient: 'linear-gradient(135deg, rgba(255,182,193,0.18), rgba(255,228,196,0.12))',
+                gradient: 'linear-gradient(135deg, rgba(255,182,193,0.28), rgba(255,228,196,0.2))',
                 arcs: [
                     { name: 'Silver Mine', start: 747, end: 750, filler: true },
                     { name: 'Zou', start: 751, end: 779 },
@@ -496,7 +508,7 @@
             },
             {
                 name: 'Wano Country',
-                gradient: 'linear-gradient(135deg, rgba(139,0,0,0.2), rgba(10,5,5,0.3), rgba(255,183,197,0.08))',
+                gradient: 'linear-gradient(135deg, rgba(139,0,0,0.3), rgba(10,5,5,0.35), rgba(255,183,197,0.15))',
                 arcs: [
                     { name: 'Levely', start: 878, end: 889 },
                     { name: 'Wano Act 1', start: 890, end: 894 },
@@ -508,7 +520,7 @@
             },
             {
                 name: 'Final Saga',
-                gradient: 'linear-gradient(135deg, rgba(220,220,240,0.15), rgba(100,200,255,0.1))',
+                gradient: 'linear-gradient(135deg, rgba(220,220,240,0.25), rgba(100,200,255,0.2))',
                 arcs: [
                     { name: 'Egghead', start: 1086, end: 1155 }
                 ]
@@ -629,11 +641,6 @@
             if (found) {
                 resultSaga.textContent = found.saga.name;
             }
-
-            // Animate Log Pose needle
-            const needle = document.getElementById('log-pose-needle');
-            const angle = (ep / TOTAL_EPISODES) * 360 - 180;
-            needle.style.transform = `translateX(-50%) rotate(${angle}deg)`;
 
             resultCurrent.innerHTML = `EP ${ep} ${makeTag(episodes[ep])}`;
 
